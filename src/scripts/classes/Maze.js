@@ -1,5 +1,4 @@
-function maze(width, height) {
+function Maze(width, height) {
     this.width = width;
     this.height = height;
-    
 }
