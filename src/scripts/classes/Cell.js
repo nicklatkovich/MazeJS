@@ -3,6 +3,8 @@ function Cell(state) {
 }
 
 Cell.STATES = {
-    EMPTY : 0,
-    WALL : 1
+    EMPTY: 0,
+    WALL: 1,
+    CHECKED: 4,
+    WAY : 5
 };

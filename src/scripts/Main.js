@@ -7,7 +7,7 @@ main.start();
 
 function Main() {
     this.start = function() {
-        this.maze = new Maze(10, 10);
+        this.maze = new Maze(100, 100);
         this.mazeCanvas = document.getElementById("tagCanvasMaze");
         this.mazeSurface = this.mazeCanvas.getContext("2d");
         this.mazeViewer = new MazeViewer(this.mazeSurface);

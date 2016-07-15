@@ -23,6 +23,16 @@ function Vector() {
         }
     };
 
+    this.set = function (index, value) {
+        if (index >= 0 && index < this.length) {
+            this.memory[index] = value;
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+
     this.swap = function (a, b) {
         if (a >= 0 && a < this.length &&
             b >= 0 && b < this.length) {
