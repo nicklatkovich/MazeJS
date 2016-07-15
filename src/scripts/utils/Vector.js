@@ -34,5 +34,9 @@ function Vector() {
         else {
             return false;
         }
-    }
+    };
+
+    this.isEmpty = function () {
+        return (this.length == 0);
+    };
 }
