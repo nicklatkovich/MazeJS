@@ -28,6 +28,8 @@ function MazeGen() {
             map[0][i].state = Cell.STATES.WALL;
             map[lastX][i].state = Cell.STATES.WALL;
         }
+        // var queue = new Queue();
+        // queue.push(new Vector2(xstart, ystart));
         return map;
     }
 }

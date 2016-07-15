@@ -32,5 +32,9 @@ function Queue() {
         else {
             this.head = this.last = newElement;
         }
+    };
+
+    this.isEmpty = function() {
+        return (this.head != null);
     }
 }
