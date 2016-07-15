@@ -19,7 +19,7 @@ function MazeViewer(surface) {
         for (var i = 0; i < maze.width; i++) {
             for (var j = 0; j < maze.height; j++) {
                 if (maze.map[i][j].state == Cell.STATES.WALL) {
-                    this.surface.fillRect(i * this.scale + this.paddingX, j * this.scale + this.paddingY, this.scale, this.scale);
+                    this.surface.fillRect(i * this.scale + this.paddingX, j * this.scale + this.paddingY, this.scale + 1, this.scale + 1);
                 }
             }
         }

@@ -11,6 +11,6 @@ function Main() {
         this.mazeCanvas = document.getElementById("tagCanvasMaze");
         this.mazeSurface = this.mazeCanvas.getContext("2d");
         this.mazeViewer = new MazeViewer(this.mazeSurface);
-        this.mazeViewer.draw(this.maze);
+        (this.canvasController = new CanvasController(this)).start();
     }
 }
