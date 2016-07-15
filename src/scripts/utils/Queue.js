@@ -35,6 +35,6 @@ function Queue() {
     };
 
     this.isEmpty = function() {
-        return (this.head != null);
+        return (this.head == null);
     }
 }
