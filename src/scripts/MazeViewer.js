@@ -21,6 +21,9 @@ function MazeViewer(surface) {
                 if (maze.map[i][j].state == Cell.STATES.WALL) {
                     this.surface.fillRect(i * this.scale + this.paddingX, j * this.scale + this.paddingY, this.scale + 1, this.scale + 1);
                 }
+                else {
+                    
+                }
             }
         }
         this.surface.fill();

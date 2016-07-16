@@ -37,17 +37,23 @@ function MazeGen() {
             ways.set(randomIndex, ways.pop());
             if (map[position.x][position.y].state == Cell.STATES.CHECKED) {
                 map[position.x][position.y].state = Cell.STATES.WAY;
+                var directions = 0;
                 for (i = 0; i < 4; i++) {
                     var newPosition = new Vector2(position.x + Differ.dx(i), position.y + Differ.dy(i));
                     switch (map[newPosition.x][newPosition.y].state) {
-                        case Cell.STATES.CHECKED:
-                            map[newPosition.x][newPosition.y].state = Cell.STATES.WALL;
+                        case Cell.STATES.WAY:
+                            directions++;
                             break;
                         case Cell.STATES.EMPTY:
                             map[newPosition.x][newPosition.y].state = Cell.STATES.CHECKED;
                             ways.push(newPosition);
                             break;
                     }
+                }
+                if (directions > 0) {
+                    var randomDirection = Utils.irandom(directions);
+                    map[position.x][position.y].state *= Directions.get(randomDirection);
+                    map[newPosition.x][newPosition.y].state *= Directions.get(randomDirection + 2);
                 }
             }
             var report = "";
