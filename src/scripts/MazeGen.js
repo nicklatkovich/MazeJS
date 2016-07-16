@@ -34,7 +34,7 @@ function MazeGen() {
         while (!ways.isEmpty()) {
             var randomIndex = Utils.irandom(ways.length);
             var position = ways.get(randomIndex);
-            console.log("{" + position.x + ", " + position.y + "}");
+            log("{" + position.x + ", " + position.y + "}");
             ways.set(randomIndex, ways.pop());
             if (map[position.x][position.y].state == Cell.STATES.CHECKED) {
                 map[position.x][position.y].state = Cell.STATES.WAY;
@@ -64,6 +64,7 @@ function MazeGen() {
                             dir++;
                         }
                     }
+                    log(dir);
                     map[position.x][position.y].state *= Directions.get(dir);
                     map[nextPosition.x][nextPosition.y].state *= Directions.get(dir + 2);
                 }

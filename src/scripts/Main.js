@@ -6,11 +6,17 @@ var main = new Main();
 main.debugMode = true;
 main.start();
 
+function log(message) {
+    if (main.debugMode == true) {
+        console.log(message);
+    }
+}
+
 function Main() {
     this.debugMode = false;
 
     this.start = function() {
-        this.maze = new Maze(10, 10);
+        this.maze = new Maze(5, 5);
         this.mazeCanvas = document.getElementById("tagCanvasMaze");
         this.mazeSurface = this.mazeCanvas.getContext("2d");
         this.mazeViewer = new MazeViewer(this.mazeSurface);
