@@ -1,4 +1,6 @@
-function Cell(state) {
+function Cell(x, y, state) {
+    this.x = x;
+    this.y = y;
     this.state = state;
 
     this.consistWay = function (direction) {

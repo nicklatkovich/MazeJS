@@ -13,7 +13,7 @@ function MazeGen() {
         for (i = 0; i < width; i++) {
             map[i] = new Array(height);
             for (var j = 0; j < height; j++) {
-                map[i][j] = new Cell(Cell.STATES.EMPTY);
+                map[i][j] = new Cell(i, j, Cell.STATES.EMPTY);
             }
         }
         var xstart = this.xstart = 1 + Utils.irandom(width - 2);
@@ -34,6 +34,7 @@ function MazeGen() {
         while (!ways.isEmpty()) {
             var randomIndex = Utils.irandom(ways.length);
             var position = ways.get(randomIndex);
+            console.log("{" + position.x + ", " + position.y + "}");
             ways.set(randomIndex, ways.pop());
             if (map[position.x][position.y].state == Cell.STATES.CHECKED) {
                 map[position.x][position.y].state = Cell.STATES.WAY;
@@ -52,8 +53,19 @@ function MazeGen() {
                 }
                 if (directions > 0) {
                     var randomDirection = Utils.irandom(directions);
-                    map[position.x][position.y].state *= Directions.get(randomDirection);
-                    map[newPosition.x][newPosition.y].state *= Directions.get(randomDirection + 2);
+                    var dir = 0;
+                    var nextPosition = null;
+                    while (randomDirection >= 0) {
+                        nextPosition = new Vector2(position.x + Differ.dx(dir), position.y + Differ.dy(dir));
+                        if (map[nextPosition.x][nextPosition.y].state = Cell.STATES.WAY) {
+                            randomDirection--;
+                        }
+                        if (randomDirection >= 0) {
+                            dir++;
+                        }
+                    }
+                    map[position.x][position.y].state *= Directions.get(dir);
+                    map[nextPosition.x][nextPosition.y].state *= Directions.get(dir + 2);
                 }
             }
             var report = "";

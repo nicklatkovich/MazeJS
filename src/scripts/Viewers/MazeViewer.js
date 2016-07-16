@@ -4,6 +4,7 @@
 
 function MazeViewer(surface) {
     this.surface = surface;
+    this.cellViewer = new CellViewer(this);
     this.maze = null;
 
     this.draw = function (maze) {
@@ -14,16 +15,13 @@ function MazeViewer(surface) {
             this.surface.canvas.width / maze.width,
             this.surface.canvas.height / maze.height
         );
+        // TODO: Подумать над: "Убрать зависимость paddingX"
+        // Использовать для этого перемещение канваса
         this.paddingX = (this.surface.canvas.width - maze.width * this.scale) / 2;
         this.paddingY = (this.surface.canvas.height - maze.height * this.scale) / 2;
         for (var i = 0; i < maze.width; i++) {
             for (var j = 0; j < maze.height; j++) {
-                if (maze.map[i][j].state == Cell.STATES.WALL) {
-                    this.surface.fillRect(i * this.scale + this.paddingX, j * this.scale + this.paddingY, this.scale + 1, this.scale + 1);
-                }
-                else {
-                    
-                }
+                this.cellViewer.draw(maze.map[i][j]);
             }
         }
         this.surface.fill();
