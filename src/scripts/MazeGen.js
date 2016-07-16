@@ -42,22 +42,25 @@ function MazeGen() {
                 for (i = 0; i < 4; i++) {
                     var newPosition = new Vector2(position.x + Differ.dx(i), position.y + Differ.dy(i));
                     switch (map[newPosition.x][newPosition.y].state) {
-                        case Cell.STATES.WAY:
-                            directions++;
-                            break;
                         case Cell.STATES.EMPTY:
                             map[newPosition.x][newPosition.y].state = Cell.STATES.CHECKED;
                             ways.push(newPosition);
                             break;
+                        default:
+                            if (map[newPosition.x][newPosition.y].isWay()) {
+                                directions++;
+                            }
+                            break;
                     }
                 }
+                log(" > " + directions);
                 if (directions > 0) {
                     var randomDirection = Utils.irandom(directions);
                     var dir = 0;
                     var nextPosition = null;
                     while (randomDirection >= 0) {
                         nextPosition = new Vector2(position.x + Differ.dx(dir), position.y + Differ.dy(dir));
-                        if (map[nextPosition.x][nextPosition.y].state = Cell.STATES.WAY) {
+                        if (map[nextPosition.x][nextPosition.y].isWay()) {
                             randomDirection--;
                         }
                         if (randomDirection >= 0) {

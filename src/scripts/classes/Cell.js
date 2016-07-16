@@ -21,12 +21,25 @@ function Cell(x, y, state) {
 
     this.canMoveRight = function () {
         return this.consistWay(Directions.NAMES.RIGHT);
-    }
+    };
+
+    this.isWay = function () {
+        switch (this.state) {
+            case Cell.STATES.EMPTY:
+            case Cell.STATES.WALL:
+            case Cell.STATES.CHECKED:
+                return false;
+                break;
+            default:
+                return true;
+            break;
+        }
+    };
 }
 
 Cell.STATES = {
     EMPTY: 0,
     WAY: 1,
     WALL: 4,
-    CHECKED: 6
+    CHECKED: 8
 };
