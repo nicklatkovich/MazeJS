@@ -11,7 +11,6 @@ function CanvasController(main) {
     this.windowIsResized = function() {
         this.main.mazeCanvas.width = this.windowSize.x = document.body.clientWidth;
         this.main.mazeCanvas.height = this.windowSize.y = document.body.clientHeight;
-        this.main.mazeViewer.draw(this.main.maze);
     };
 
     this.checkCanvasToResize = function () {
@@ -19,6 +18,8 @@ function CanvasController(main) {
             this.windowSize.y != document.body.clientHeight) {
             this.windowIsResized();
         }
+        this.main.mazeViewer.draw(this.main.maze);
+        this.main.dynamicViewer.draw();
     };
 
     this.start = function () {
